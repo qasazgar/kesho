@@ -3,6 +3,14 @@ Library    SeleniumLibrary
 Variables  ../variables/variables.py
 
 *** Keywords ***
+Open Browser Chrome Headless
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    Call Method    ${options}    add_argument    --headless
+    Call Method    ${options}    add_argument    --disable-notifications
+    Call Method    ${options}    add_argument    --disable-cache
+    # به جای "--window-size=1920,1080" از set_window_size استفاده می‌کنیم بعد از باز کردن مرورگر
+    Open Browser    ${BASE_URL}/login    chrome    options=${options}
+    Set Window Size    1920    1080
 Open Browser To Login Page
     Open Browser    ${BASE_URL}/login    ${BROWSER}
     Maximize Browser Window

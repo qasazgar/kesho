@@ -4,7 +4,7 @@ Library           SeleniumLibrary
 Resource          ../../resources/common.resource
 
 Resource          ../step_definitions/login_steps.robot
-Test Setup        Open Browser To Login Page
+Test Setup        Open Browser Chrome Headless
 Test Teardown    Close Browser Chrome
 
 
